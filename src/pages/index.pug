@@ -1,0 +1,36 @@
+extends ../layouts/main
+
+block data
+  include ../data/index
+
+block title
+  title #{ site.name } - design agency | Branding, print and web
+
+//- Додаємо метадані, не замінюючи базові meta-теги макета.
+block append meta
+  include ../includes/meta
+
+//- Шрифти завантажуються перед основними стилями.
+block prepend styles
+  include ../includes/fonts
+
+//- Структуровані дані додаються перед скриптами сторінки.
+block prepend scripts
+  include ../includes/structured-data
+
+block header
+  include ../components/header
+
+block content
+  main#main
+    include ../components/sections/hero
+    include ../components/sections/works
+    include ../components/sections/cta
+    include ../components/sections/services
+    include ../components/sections/stats
+    include ../components/sections/journal
+    include ../components/sections/clients
+
+block footer
+  include ../components/footer
+  include ../components/to-top

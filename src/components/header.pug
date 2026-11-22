@@ -1,0 +1,33 @@
+a.skip-link(href='#main') Skip to content
+header.site-header
+  .container.site-header__inner
+    a.logo(href='#top', aria-label='Keepsake - home')
+      span.logo__mark(aria-hidden='true') K
+      span(aria-hidden='true') eepsake
+    button.site-header__burger(
+      type='button',
+      popovertarget='site-menu',
+      aria-controls='site-menu',
+      aria-label='Menu'
+    )
+      +icon('burger').site-header__icon-open
+      +icon('close').site-header__icon-close
+
+    nav#site-menu.nav(popover, aria-label='Main')
+      ul.nav__list
+        each item in navItems
+          li.nav__item
+            a.nav__link(
+              class={ 'nav__link--active': item.active },
+              href=item.href,
+              aria-current=item.active ? 'page' : false
+            )= item.text
+      .nav__actions
+        +btn('Contact us', '#contact').nav__contact
+        +btn('Favourites', '#favourites', 'favourite')(aria-label='Favourites')
+          +icon('heart')
+      .nav__info
+        p.nav__info-label Get in touch
+        each line in navContacts
+          p.nav__info-text= line
+      +social-list(socials).nav__socials

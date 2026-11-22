@@ -1,0 +1,16 @@
+footer#contact.footer
+  .container
+    .footer__top
+      include newsletter
+      .footer__links
+        each column in footerColumns
+          .footer__col
+            h2.footer__heading= column.title
+            ul.footer__list
+              each link in column.links
+                li
+                  a.footer__link(href=link.href)= link.text
+    .footer__divider
+    .footer__bottom
+      p.footer__copy &copy; #{ year } #{ site.name }. All rights reserved.
+      +social-list(socials)

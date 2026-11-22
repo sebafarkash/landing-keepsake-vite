@@ -1,0 +1,9 @@
+section#about.section(aria-labelledby='services-title')
+  .container
+    h2#services-title.section-title What do we do
+    p.section-desc
+      | We are a small team of designers and makers who help brands look their best online
+      | and offline.
+    .services
+      each item in services
+        +service(item)

@@ -1,0 +1,8 @@
+section#journal.section(aria-labelledby='journal-title')
+  .container
+    h2#journal-title.section-title From the journal
+    p.section-desc Notes on process, case studies and things that inspire us.
+    ul.journal
+      each entry in journal
+        li
+          +journal-card(entry)

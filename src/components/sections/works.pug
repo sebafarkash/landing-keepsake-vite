@@ -1,0 +1,28 @@
+//- Фільтр на :checked ~: радіокнопки (по одній на категорію) мають бути сусідами сітки
+section#works.works.section(aria-labelledby='works-title')
+  .container
+    each filter, i in filters
+      input.works__radio(
+        type='radio',
+        name='works-filter',
+        id=`filter-${filter.id}`,
+        value=filter.id,
+        checked=i === 0
+      )
+    input#works-more.works__more(type='checkbox', aria-label='Show all works')
+    .works__head
+      h2#works-title.section-title Our awesome works
+      .works__chips
+        each filter in filters
+          label.chip(for=`filter-${filter.id}`)= filter.label
+    ul.works-grid
+      each work, i in works
+        li.works-grid__item(
+          class={ 'works-grid__item--from-md': work.showFrom === 'md', 'works-grid__item--from-lg': work.showFrom === 'lg' },
+          data-category=work.category
+        )
+          +work-card(work, i === 0)
+    .works__footer
+      label.btn.btn--secondary.works__load-more(for='works-more')
+        span.works__label-more Load more works
+        span.works__label-less Showing all works

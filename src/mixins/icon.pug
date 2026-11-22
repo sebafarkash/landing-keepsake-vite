@@ -1,0 +1,25 @@
+//- +icon(name)(class='...') - інлайн-SVG із src/includes/icons, колір береться з currentColor.
+//- Розмір кожної іконки задає map $icon-sizes у SCSS.
+mixin icon(name)
+  span.icon(class=`icon--${name}`, aria-hidden='true')&attributes(attributes)
+    case name
+      when 'heart'
+        include ../includes/icons/heart.svg
+      when 'plus'
+        include ../includes/icons/plus.svg
+      when 'mail'
+        include ../includes/icons/mail.svg
+      when 'chevron'
+        include ../includes/icons/chevron.svg
+      when 'burger'
+        include ../includes/icons/burger.svg
+      when 'close'
+        include ../includes/icons/close.svg
+      when 'arrow-up'
+        include ../includes/icons/arrow-up.svg
+      when 'service-web'
+        include ../includes/icons/service-web.svg
+      when 'service-motion'
+        include ../includes/icons/service-motion.svg
+      when 'service-print'
+        include ../includes/icons/service-print.svg

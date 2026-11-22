@@ -1,0 +1,6 @@
+//- +social-list(items)(class='nav__socials') - кольорові кружечки з текстом
+mixin social-list(items)
+  ul.social&attributes(attributes)
+    each item in items
+      li
+        a.social__link(class=`social__link--${item.id}`, href='#', aria-label=item.name)= item.text

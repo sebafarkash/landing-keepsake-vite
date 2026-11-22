@@ -1,0 +1,22 @@
+//- +btn(label, href, variant)(...довільні атрибути)
+//-   variant: primary (за замовчуванням) | secondary | favourite
+//-   без href - це <button>; вкладений вміст (block) виводиться перед підписом (іконка)
+mixin btn(label, href, variant = 'primary')
+  - let modifier = null;
+  case variant
+    when 'secondary'
+      - modifier = 'btn--secondary';
+    when 'favourite'
+      - modifier = 'btn--favourite';
+    default
+      - modifier = null;
+  unless href
+    button.btn(class=modifier)&attributes(attributes)
+      if block
+        block
+      span.btn__label= label
+  else
+    a.btn(class=modifier, href=href)&attributes(attributes)
+      if block
+        block
+      span.btn__label= label

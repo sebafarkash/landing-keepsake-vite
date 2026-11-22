@@ -1,0 +1,8 @@
+section.stats.section(aria-labelledby='stats-title')
+  .container
+    h2#stats-title.visually-hidden Keepsake in numbers
+    ul.stats__list
+      each stat in stats
+        li.stats__item
+          p.stats__value= stat.value
+          p.stats__label= stat.label

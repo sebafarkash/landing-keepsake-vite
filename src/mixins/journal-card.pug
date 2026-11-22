@@ -1,0 +1,25 @@
+mixin journal-card(entry)
+  article.journal-card
+    .journal-card__thumb
+      +picture({
+        name: 'image',
+        alt: '',
+        width: 300,
+        height: 300,
+        widths: [150, 300],
+        sizes: '(min-width: 768px) 150px, 96px',
+        cls: 'journal-card__img',
+      })
+    .journal-card__body
+      p.journal-card__meta
+        time(datetime=entry.date) #{ entry.dateLabel }
+        |
+        | / #{ entry.category }
+      h3.journal-card__title= entry.title
+      if entry.excerpt
+        p= entry.excerpt
+      else
+        p.journal-card__excerpt More notes from the Keepsake studio.
+      a.journal-card__more(href='#', aria-label=`Read more: ${entry.title}`)
+        | Read more
+        +icon('chevron')

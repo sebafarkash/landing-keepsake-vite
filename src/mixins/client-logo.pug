@@ -1,0 +1,3 @@
+//- Логотип клієнта - текст; шрифт задає модифікатор clients__item--<mod>
+mixin client-logo(client)
+  li.clients__item(class=`clients__item--${client.mod}`)= client.name

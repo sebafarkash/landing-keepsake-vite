@@ -1,0 +1,23 @@
+//- +picture({ name, alt, width, height, widths, sizes, eager, cls })
+//-   Файли: /src/assets/images/<name>-<width>.(avif|webp|jpg), створюються командою npm run images.
+//-   eager: зображення першого екрана (без lazy, з fetchpriority="high")
+mixin picture(opts)
+  -
+    const { name, alt = '', width, height, widths = [400, 800], sizes = '100vw', eager = false, cls } = opts
+    const dir = '/src/assets/images'
+    const srcset = (ext) => widths.map((w) => `${dir}/${name}-${w}.${ext} ${w}w`).join(', ')
+    const largest = Math.max(...widths)
+    const loading = eager ? { fetchpriority: 'high' } : { loading: 'lazy' }
+  picture
+    source(type='image/avif', srcset=srcset('avif'), sizes=sizes)
+    source(type='image/webp', srcset=srcset('webp'), sizes=sizes)
+    img(
+      class=cls,
+      src=`${dir}/${name}-${largest}.jpg`,
+      srcset=srcset('jpg'),
+      sizes=sizes,
+      alt=alt,
+      width=width,
+      height=height,
+      decoding='async'
+    )&attributes(loading)

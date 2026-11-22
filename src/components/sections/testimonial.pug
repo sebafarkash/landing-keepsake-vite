@@ -1,0 +1,17 @@
+figure.testimonial
+  span.testimonial__mark(aria-hidden='true') &ldquo;
+  blockquote.testimonial__text
+    if testimonial.quote
+      p= testimonial.quote
+    else
+      p A kind word from one of our clients.
+  figcaption.testimonial__author
+    .testimonial__person
+      .testimonial__avatar(aria-hidden='true')= testimonial.initials
+      div
+        p.testimonial__name= testimonial.name
+        p.testimonial__role= testimonial.role
+    //- Статичний індикатор з трьох точок, як у вихідному макеті.
+    .testimonial__dots(aria-hidden='true')
+      each _, i in [1, 2, 3]
+        span.testimonial__dot(class={ 'testimonial__dot--active': i === 0 })

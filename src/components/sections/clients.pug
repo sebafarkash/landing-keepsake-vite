@@ -1,0 +1,8 @@
+section.section(aria-labelledby='clients-title')
+  .container
+    h2#clients-title.section-title Clients &amp; kind words
+    p.section-desc Some of the teams that trusted us with their brands.
+    ul.clients
+      each client in clients
+        +client-logo(client)
+    include testimonial

@@ -1,0 +1,125 @@
+// Дизайн-токени lab-07: кольори, шрифти, відступи, брейкпоінти.
+// Усі значення оголошені один раз; у CSS вони потрапляють через custom properties (base/_root.scss).
+
+$root-font-size: 16px;
+$colors: (
+  'accent': #f95858,
+  'accent-hover': #e44646,
+  'teal': #2cd5c4,
+  'text-dark': #3a3a3c,
+  'text': #666a6e,
+  'muted': #9aa0a6,
+  'bg-light': #f0f3f4,
+  'border': #e1e5e8,
+  'footer': #2a2a2d,
+  'overlay': rgb(30 32 36 / 82%),
+  'white': #fff,
+
+  // додаткові кольори дизайну (у макеті не захардкоджені)
+  'logo': #b9bec3,
+  'dot': #cfd5d9,
+  'footer-muted': #8e9297,
+  'footer-subtle': #777b80,
+  'footer-link': #a9adb3,
+  'footer-field': #38383c,
+  'footer-field-border': #47474c,
+  'footer-divider': #3b3b40,
+  'social-rss': #f7a64a,
+  'social-f': #4d6db3,
+  'social-tw': #20b5e9,
+  'social-dr': #ee7cb0,
+  'social-p': #e84849,
+);
+$fonts: (
+  'heading': (
+    'Oswald',
+    sans-serif,
+  ),
+  'body': (
+    'Open Sans',
+    sans-serif,
+  ),
+  'script': (
+    'Dancing Script',
+    cursive,
+  ),
+);
+
+// mobile first: значення за замовчуванням (375) і зміни від md та lg
+$breakpoints: (
+  'md': 768px,
+  'lg': 1280px,
+);
+$container-max: 1100px;
+
+// Бокові поля контейнера: 20 / 40 / 90
+$gutters: (
+  'base': 20px,
+  'md': 40px,
+  'lg': 90px,
+);
+
+// Вертикальний відступ між секціями: 56 / 72 / 90
+$section-gaps: (
+  'base': 56px,
+  'md': 72px,
+  'lg': 90px,
+);
+
+// Висота фіксованого header: 64 / 84 / 100
+$header-heights: (
+  'base': 64px,
+  'md': 84px,
+  'lg': 100px,
+);
+
+// Соцмережі футера та меню (кольорові кружечки з текстом)
+$socials: ('rss', 'f', 'tw', 'dr', 'p');
+
+// Розміри SVG-іконок (ширина, висота) у px
+$icon-sizes: (
+  'heart': (
+    16,
+    14.4,
+  ),
+  'plus': (
+    16,
+    16,
+  ),
+  'mail': (
+    14,
+    10,
+  ),
+  'chevron': (
+    5,
+    9,
+  ),
+  'burger': (
+    22,
+    16,
+  ),
+  'close': (
+    22,
+    22,
+  ),
+  'arrow-up': (
+    12,
+    14,
+  ),
+  'service-web': (
+    42,
+    30,
+  ),
+  'service-motion': (
+    40,
+    32,
+  ),
+  'service-print': (
+    42,
+    34,
+  ),
+);
+
+// Категорії портфоліо. Фільтр працює на :checked ~, тому CSS-правила
+// генеруються для кожної категорії (список має збігатися з src/data/filters.pug).
+$work-categories: ('branding', 'identity', 'print', 'web', 'motion');

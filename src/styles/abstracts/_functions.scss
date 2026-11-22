@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'tokens' as *;
+
+@function rem($px, $base: $root-font-size) {
+  @if not math.is-unitless($px) {
+    $px: math.div($px, 1px);
+  }
+
+  @return math.div($px, math.div($base, 1px)) * 1rem;
+}
+
+@function token($map, $key) {
+  @if not map.has-key($map, $key) {
+    @error 'Unknown key `#{$key}`. Available: #{map.keys($map)}';
+  }
+
+  @return map.get($map, $key);
+}

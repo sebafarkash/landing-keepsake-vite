@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  font-size: rem(18);
+  line-height: rem(27);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+
+  // коралова риска 16x2 праворуч від заголовка
+  &::after {
+    content: '';
+    width: rem(16);
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+}

@@ -1,0 +1,37 @@
+@use '../abstracts' as *;
+
+.social {
+  display: flex;
+  gap: rem(10);
+
+  @include mq(md) {
+    gap: rem(8);
+  }
+
+  @include mq(lg) {
+    gap: rem(10);
+  }
+
+  &__link {
+    @include flex-center;
+
+    width: rem(34);
+    height: rem(34);
+    font-size: rem(12);
+    font-weight: 700;
+    line-height: rem(16);
+    color: var(--color-white);
+    border-radius: 50%;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  // Кольори кружечків генеруються зі списку $socials
+  @each $name in $socials {
+    &__link--#{$name} {
+      background-color: var(--color-social-#{$name});
+    }
+  }
+}

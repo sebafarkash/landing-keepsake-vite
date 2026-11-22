@@ -1,0 +1,139 @@
+@use '../abstracts' as *;
+
+// Меню - це [popover]: на мобайлі відкривається кнопкою-бургером (popovertarget) на весь екран
+// під header, від tablet стає звичайним рядом у шапці.
+.nav {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: rem(20) var(--gutter) rem(32);
+  overflow-y: auto;
+  color: inherit;
+  background-color: var(--color-white);
+  border: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: rem(24);
+
+  &:popover-open {
+    display: flex;
+  }
+
+  @include mq(md) {
+    position: static;
+    inset: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  @include mq(lg) {
+    gap: rem(40);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(md) {
+      flex-direction: row;
+      gap: rem(24);
+    }
+
+    @include mq(lg) {
+      gap: rem(40);
+    }
+  }
+
+  &__item {
+    border-bottom: 1px solid var(--color-border);
+
+    @include mq(md) {
+      border-bottom: 0;
+    }
+  }
+
+  &__link {
+    @include transition(color);
+
+    display: block;
+    padding: rem(16) 0;
+    font-family: var(--font-heading);
+    font-size: rem(24);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+
+    &:hover,
+    &--active {
+      color: var(--color-accent);
+    }
+
+    @include mq(md) {
+      padding: 0;
+      font-size: rem(13);
+      font-weight: 400;
+      line-height: rem(19);
+      letter-spacing: 1px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+
+    @include mq(md) {
+      flex-direction: row;
+    }
+  }
+
+  // «Contact us» лише в мобільному меню
+  &__actions &__contact {
+    width: 100%;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    padding: rem(20);
+    background-color: var(--color-bg-light);
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__info-label {
+    font-family: var(--font-heading);
+    font-size: rem(12);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  &__info-text {
+    color: var(--color-text-dark);
+  }
+
+  &__socials {
+    justify-content: center;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+}

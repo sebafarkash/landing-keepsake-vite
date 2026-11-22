@@ -1,0 +1,8 @@
+// Відступ згори між секціями: 56 / 72 / 90
+.section {
+  padding-top: var(--section-gap);
+}
+
+.section-desc {
+  margin-block: 14px;
+}

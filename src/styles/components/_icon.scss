@@ -1,0 +1,15 @@
+@use 'sass:list';
+@use '../abstracts' as *;
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+
+  // Розміри кожної іконки беруться з map $icon-sizes
+  @each $name, $size in $icon-sizes {
+    &--#{$name} svg {
+      width: rem(list.nth($size, 1));
+      height: rem(list.nth($size, 2));
+    }
+  }
+}

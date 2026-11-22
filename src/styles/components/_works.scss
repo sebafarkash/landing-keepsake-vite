@@ -1,0 +1,97 @@
+@use '../abstracts' as *;
+
+// Фільтр портфоліо без JS: радіокнопки + :checked ~ (брати категорії зі списку $work-categories)
+.works {
+  &__radio,
+  &__more {
+    @include visually-hidden;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: rem(18);
+    margin-bottom: rem(22);
+
+    @include mq(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(24);
+    }
+  }
+
+  // на мобайлі чипси прокручуються горизонтально і виходять за правий край
+  &__chips {
+    display: flex;
+    gap: rem(8);
+    margin-right: calc(var(--gutter) * -1);
+    padding-right: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    @include mq(md) {
+      margin-right: 0;
+      padding-right: 0;
+      overflow: visible;
+    }
+  }
+
+  &__radio:focus-visible ~ &__head &__chips {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 4px;
+  }
+
+  // Активна категорія та фільтрація карточок
+  @each $category in $work-categories {
+    &__radio[value='#{$category}']:checked ~ &__head .chip[for='filter-#{$category}'] {
+      color: var(--color-white);
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    &__radio[value='#{$category}']:checked
+      ~ .works-grid
+      .works-grid__item:not([data-category='#{$category}']) {
+      display: none;
+    }
+  }
+
+  &__radio[value='all']:checked ~ &__head .chip[for='filter-all'] {
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(28);
+  }
+
+  &__load-more {
+    width: 100%;
+
+    @include mq(md) {
+      width: auto;
+    }
+  }
+
+  &__more:focus-visible ~ &__footer &__load-more {
+    @include focus-ring;
+  }
+
+  &__label-less,
+  &__more:checked ~ &__footer &__label-more {
+    display: none;
+  }
+
+  &__more:checked ~ &__footer &__label-less {
+    display: inline;
+  }
+
+  // «Load more»: показуємо приховані на tablet/mobile карточки
+  &__more:checked ~ .works-grid .works-grid__item {
+    display: block;
+  }
+}

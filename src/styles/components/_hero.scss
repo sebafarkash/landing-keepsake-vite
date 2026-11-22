@@ -1,0 +1,40 @@
+@use '../abstracts' as *;
+
+.hero {
+  padding: rem(40) 0;
+  background-color: var(--color-bg-light);
+
+  @include mq(md) {
+    padding: rem(52) 0;
+  }
+
+  @include mq(lg) {
+    padding: rem(64) 0;
+  }
+
+  &__title {
+    margin-bottom: rem(14);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+
+    @include font-scale(26, 32, 40);
+  }
+
+  &__text {
+    margin-bottom: rem(24);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+
+    @include mq(md) {
+      flex-direction: row;
+      gap: rem(12);
+    }
+  }
+}

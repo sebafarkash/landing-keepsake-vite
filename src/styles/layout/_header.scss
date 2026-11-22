@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // Бургер - <button popovertarget>; без JS відкриває й закриває меню
+  &__burger {
+    @include flex-center;
+
+    width: rem(40);
+    height: rem(40);
+    color: var(--color-text-dark);
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__burger &__icon-close {
+    display: none;
+  }
+
+  // відкрите меню: бургер -> хрестик
+  &:has(:popover-open) &__icon-open {
+    display: none;
+  }
+
+  &:has(:popover-open) &__burger &__icon-close {
+    display: block;
+  }
+}

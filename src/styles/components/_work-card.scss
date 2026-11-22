@@ -1,0 +1,75 @@
+@use '../abstracts' as *;
+
+.work-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 0.72;
+  cursor: pointer;
+  background-color: var(--color-bg-light);
+
+  @include mq(md) {
+    aspect-ratio: 1 / 0.79;
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+  }
+
+  picture {
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    @include flex-center(column);
+    @include transition(opacity);
+
+    position: absolute;
+    inset: 0;
+    gap: rem(10);
+    background-color: var(--color-overlay);
+    opacity: 0;
+  }
+
+  // однаковий стан для hover і клавіатурного фокусу
+  &:hover &__overlay,
+  &:focus-within &__overlay {
+    opacity: 1;
+  }
+
+  &__plus {
+    @include flex-center;
+
+    width: rem(44);
+    height: rem(44);
+    color: var(--color-white);
+    background-color: var(--color-teal);
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-size: rem(17);
+    line-height: rem(25);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+
+  &__line {
+    width: rem(30);
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  &__category {
+    font-size: rem(13);
+    line-height: rem(18);
+    color: var(--color-teal);
+  }
+}

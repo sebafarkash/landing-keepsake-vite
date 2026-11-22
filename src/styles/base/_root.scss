@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '../abstracts' as *;
+
+// Токени з SCSS-map-ів перетворюються на CSS custom properties
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $fonts {
+    --font-#{$name}: #{$value};
+  }
+
+  --container-max: #{$container-max};
+  --gutter: #{token($gutters, 'base')};
+  --section-gap: #{token($section-gaps, 'base')};
+  --header-height: #{token($header-heights, 'base')};
+
+  @each $bp in map.keys($breakpoints) {
+    @include mq($bp) {
+      --gutter: #{token($gutters, $bp)};
+      --section-gap: #{token($section-gaps, $bp)};
+      --header-height: #{token($header-heights, $bp)};
+    }
+  }
+}

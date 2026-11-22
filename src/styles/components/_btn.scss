@@ -1,0 +1,66 @@
+@use '../abstracts' as *;
+
+.btn {
+  @include flex-center(row, rem(8));
+  @include label-text;
+  @include transition(color background-color border-color);
+
+  display: inline-flex;
+  height: rem(40);
+  padding: 0 rem(20);
+  line-height: rem(19);
+  color: var(--color-white);
+  background-color: var(--color-accent);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  &--secondary {
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      color: var(--color-accent);
+      background-color: var(--color-white);
+      border-color: var(--color-accent);
+    }
+  }
+
+  // Favourites: у мобільному меню - широка кнопка з текстом,
+  // від tablet - квадратна 36x36 з іконкою
+  &--favourite {
+    width: 100%;
+    padding: 0;
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      color: var(--color-accent);
+      background-color: var(--color-white);
+      border-color: var(--color-accent);
+    }
+
+    @include mq(md) {
+      width: rem(36);
+      height: rem(36);
+      padding: 0;
+      color: var(--color-white);
+      background-color: var(--color-accent);
+      border: 0;
+
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-accent-hover);
+      }
+    }
+  }
+
+  &--favourite &__label {
+    @include mq(md) {
+      @include visually-hidden;
+    }
+  }
+}

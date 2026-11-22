@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+// Сітка карточок: 1 колонка (5 карточок) -> 2 (8) -> 3 (9)
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(12);
+
+  @include mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(14);
+  }
+
+  &__item {
+    display: block;
+
+    // карточки 6-8: лише від tablet; 9: лише від desktop (поки не натиснуто «Load more»)
+    &--from-md {
+      display: none;
+
+      @include mq(md) {
+        display: block;
+      }
+    }
+
+    &--from-lg {
+      display: none;
+
+      @include mq(lg) {
+        display: block;
+      }
+    }
+  }
+}
